@@ -16,7 +16,7 @@
 
 ### 주요 기능
 1.  컴퓨터는 1~9까지 랜덤한 숫자를 가진다. 이때 중복되는 숫자가 없어야 한다.
-=> 아래 함수로 구현함.
+-> 아래 함수로 구현함.
 
 ```
 const numArr = ["1","2","3","4","5","6","7","8","9"];
@@ -40,5 +40,46 @@ function randomNum() // 1~9 까지 숫자를 3개를 받는다. String으로 저
     }
     console.log("num : " + num);
     return num;
+}
+```
+
+2. 유저가 입력한 값과 컴퓨터의 값을 비교한다.
+유저가 입력한 값이 컴퓨터의 입력한 값과 동일한 원소가 있다면 ball 이라고 보여준다.
+유저가 입력한 값과 인덱스까지 맞다면 Strike 라고 보여준다.
+아래 코드로 구현했다.
+
+```
+// 볼, 스트라이크 유무를 확인하는 함수
+function comUserCheck(user, com) // String, String
+{
+    let strikeCnt = 0;
+    let ballCnt = 0;
+    const userArr = user.split('');
+    const comArr = com.split('');
+    console.log("userArr : " + userArr);
+    console.log("comArr : " + comArr);
+
+    for (let i = 0; i < userArr.length; i++) {
+        for (let j = 0; j < comArr.length; j++) {
+            if(userArr[i] === comArr[j] && i === j)
+            {
+                strikeCnt++;
+                console.log(`${strikeCnt} Strike !!!!!!!!!!!!!!!!`);
+            }
+            else if(userArr[i] === comArr[j])
+            {
+                ballCnt++;
+                console.log(`${ballCnt} ball !!!!!!!!!!!!!!!!!!!!!`);
+            }
+        }
+    }
+
+    const balls = document.querySelectorAll('.ball');
+    for (let i = 0; i < ballCnt; i++) {
+        console.log('ball', i);
+        balls[i].style.backgroundColor = '#1db71d';
+    }
+    // strikeStatus.innerText = `${strikeCnt} Strike!!!!!!!`;
+    // ballStatus.innerText = `${ballCnt} Ball!!!!!!!!!!!!!`;
 }
 ```
