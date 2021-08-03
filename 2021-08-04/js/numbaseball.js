@@ -81,9 +81,12 @@ function comUserCheck(user, com) // String, String
     }
 
     const balls = document.querySelectorAll('.ball');
+    const strikes = document.querySelectorAll('.strike')
     for (let i = 0; i < ballCnt; i++) {
         console.log('ball', i);
         balls[i].style.backgroundColor = '#1db71d';
+        strikes[i].style.backgroundColor = '#ecec51';
+
     }
     // strikeStatus.innerText = `${strikeCnt} Strike!!!!!!!`;
     // ballStatus.innerText = `${ballCnt} Ball!!!!!!!!!!!!!`;

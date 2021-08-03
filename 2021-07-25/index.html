@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" href = "css/style.css"/>
+    <title>Title</title>
+</head>
+<body>
+    <h1>가위바위보 게임</h1>
+    <br><br>
+
+    <img class = "" id = "scissors" src = "scissors.png" width = 200 , height = 200>
+    <img class = "" id = "rock" src = "rock.png" width = 200 , height = 200>
+    <img class = "" id = "paper" src = "paper.png" width = 200 , height = 200>
+    
+    <div id = "com"></div>
+    <br><br>
+
+    <div id = "result"></div>
+    <br><br>
+
+        <button id = "checkResult">결과 확인</button>
+        <br><br>
+        <button id = "match_search">전적 확인</button>
+
+    <div class = "modal hidden">
+        <div class = "bg"></div>
+        <div class = "content">
+            <h1>전 적</h1>
+            <div id = "rps_cnt"></div>
+            <div id = "user_wincnt"></div>
+            <div id = "com_wincnt"></div>
+        </div>
+    </div>
+    <script src = "js/solution_001.js"></script>
+
+</body>
+</html>

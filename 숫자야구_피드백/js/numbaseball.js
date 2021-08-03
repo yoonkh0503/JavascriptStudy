@@ -27,6 +27,7 @@ function randomNum() // 1~9 까지 숫자를 3개를 받는다. String으로 저
     while(!isStop) // 무한루프가 발생할 가능성?
     {
         const rNum = Math.trunc(Math.random() * numArr.length);
+        console.log('--------------', rNum);
         const removedNum = numArr.splice(rNum - 1 , 1); // 원본인 numArr도 지워주도록
         console.log("removed arr : " + removedNum);
         num += removedNum;
@@ -47,6 +48,7 @@ const ballStatus = document.querySelector("#status p:last-child")
 function gameCheck()
 {
     const userInputValue = document.querySelector("input").value;
+    document.querySelector("input").value = '';
     console.log("유저가 입력한 값 : ", userInputValue);
     document.querySelector("h2").innerText = `입력한 숫자 : ${userInputValue}`;
     comUserCheck(userInputValue,comRandomNum);
@@ -63,28 +65,31 @@ function comUserCheck(user, com) // String, String
     console.log("userArr : " + userArr);
     console.log("comArr : " + comArr);
 
-    userArr.forEach(function(element , index) {
-        console.log("element : " + element);
-        console.log("index : " + index);
-        for(let i = 0; i < comArr.length; i++)
-        {
-            if(comArr[i] === element && comArr.indexOf(comArr[i]) === index)
+    for (let i = 0; i < userArr.length; i++) {
+        for (let j = 0; j < comArr.length; j++) {
+            if(userArr[i] === comArr[j] && i === j)
             {
                 strikeCnt++;
                 console.log(`${strikeCnt} Strike !!!!!!!!!!!!!!!!`);
             }
-            else if(comArr[i] === element)
+            else if(userArr[i] === comArr[j])
             {
                 ballCnt++;
                 console.log(`${ballCnt} ball !!!!!!!!!!!!!!!!!!!!!`);
             }
         }
-    });
-    strikeStatus.innerText = `${strikeCnt} Strike!!!!!!!`;
-    ballStatus.innerText = `${ballCnt} Ball!!!!!!!!!!!!!`;
+    }
+
+    const balls = document.querySelectorAll('.ball');
+    for (let i = 0; i < ballCnt; i++) {
+        console.log('ball', i);
+        balls[i].style.backgroundColor = '#1db71d';
+    }
+    // strikeStatus.innerText = `${strikeCnt} Strike!!!!!!!`;
+    // ballStatus.innerText = `${ballCnt} Ball!!!!!!!!!!!!!`;
 }
 
-button.addEventListener('click',gameCheck)
+button.addEventListener('click', gameCheck)
 
 // To Do
 // 1. 3 Strike가 되면 게임 재시작 하는 기능

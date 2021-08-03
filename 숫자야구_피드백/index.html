@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"/>
+    <title>Baseball</title>
+</head>
+<body>
+    <h1 align = "center">숫자 야구</h1>
+    <div style="text-align:center">
+        <input type="text" placeholder="숫자 3개를 입력하세요!" style="width:300px;height:100px;font-size:30px;text-align: center" maxlength="3">
+        <br>
+        <button type="submit" style="margin-top:20px;">제출</button>
+    </div>
+    <h2 style="text-align:center"></h2>
+    <div id="status">
+        <div>
+            <div class="bso">B</div>
+            <div class="score">
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+            </div>
+        </div>
+        <div>
+            <div class="bso">S</div>
+            <div class="score">
+                <div class="strike"></div>
+                <div class="strike"></div>
+            </div>
+        </div>
+        <div>
+            <div class="bso">O</div>
+            <div class="score">
+                <div class="out"></div>
+                <div class="out"></div>
+            </div>
+        </div>
+    </div>
+    <script src = "js/numbaseball.js"></script>
+</body>
+</html>
