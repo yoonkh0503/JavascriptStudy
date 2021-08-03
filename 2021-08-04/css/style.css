@@ -1,0 +1,50 @@
+body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#status {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+#status div {
+    display: flex;
+}
+
+.score div {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.strike {
+    /*background-color: #ecec51;*/
+}
+
+.ball {
+    /*background-color: #1db71d;*/
+}
+
+.out {
+    /*background-color: red;*/
+}
+
+#status div .score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bso {
+    font-size: 4rem;
+    font-family: 'D2Coding';
+    display: flex;
+    align-items: center;
+}
