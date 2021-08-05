@@ -265,6 +265,8 @@ function comUserCheck(user, com) // String, String
 # 2021-08-05
 ## 수정 사항 및 구현 내용
 
+* 구현/수정한 내용들
+
 
     1. 버튼을 클릭할 때 볼, 스트라이크가 화면에서 초기화되도록 개선
     2. 볼, 스트라이크를 그려주는 함수는 별도로 분리함.
@@ -272,7 +274,10 @@ function comUserCheck(user, com) // String, String
     4. 사용자가 숫자 3개를 초과하여 입력했을 때 얼럿이 뜨도록 검사
     5. 사용자가 입력한 숫자 중 중복된 값이 있을 경우 게임이 진행이 불가하도록 함수 구현
 
-1. 버튼을 클릭할 때 볼, 스트라이크가 화면에서 초기화되도록 개선
+
+
+
+## 1. 버튼을 클릭할 때 볼, 스트라이크가 화면에서 초기화되도록 개선
 ```
 function gameCheck()
 {
@@ -293,7 +298,9 @@ balls 클래스와 strike 클래스를 가져와서 변수에 담은 뒤, 백그
 
 볼인지 스트라이크인지 확인이 어렵기 때문이다. 이런 현상을 수정하기 위해 위의 검사 조건을 추가했다.
 
-2. 볼, 스트라이크를 그려주는 함수는 별도로 분리함.
+
+
+## 2. 볼, 스트라이크를 그려주는 함수는 별도로 분리함.
 
 ```
 function paintingStrikeBall(ballCnt,strikeCnt)
@@ -318,7 +325,9 @@ function paintingStrikeBall(ballCnt,strikeCnt)
 
 혼동이 있을 것 같았다. 그래서 HTML을 그리는 함수를 별도로 분리하였다. 기능상 큰 차이는 없다.
 
-3. comUserCheck 함수에서 볼과 스트라이크 정보를 오브젝트 타입으로 리턴 받는 것으로 수정.
+
+
+## 3. comUserCheck 함수에서 볼과 스트라이크 정보를 오브젝트 타입으로 리턴 받는 것으로 수정.
 
 ```
 function comUserCheck(user, com) // String, String
@@ -356,7 +365,9 @@ function comUserCheck(user, com) // String, String
 볼 카운트와 스트라이크 카운트 정보를 받아오기 위해 해당 함수에서 오브젝트 형식으로 카운트를 저장하고, 버튼 클릭 이벤트에서 해당 볼 카운트와
 스트라이크 카운트를 활용할 수 있도록 하기 위해 위와 같이 수정하였다.
 
-4. 사용자가 숫자 3개를 초과하여 입력했을 때 얼럿이 뜨도록 검사
+
+
+## 4. 사용자가 숫자 3개를 초과하여 입력했을 때 얼럿이 뜨도록 검사
 
 ```
 if(userInputValue.length > 3)
@@ -366,7 +377,7 @@ if(userInputValue.length > 3)
     // 단순 수정
 ```
 
-5. 사용자가 입력한 숫자 중 중복된 값이 있을 경우 게임이 진행이 불가하도록 함수 구현
+## 5. 사용자가 입력한 숫자 중 중복된 값이 있을 경우 게임이 진행이 불가하도록 함수 구현
 
 ```
 function isInvalidUserInput(inputNum)
