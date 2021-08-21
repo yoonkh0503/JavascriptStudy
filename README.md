@@ -261,3 +261,166 @@ function comUserCheck(user, com) // String, String
     // ballStatus.innerText = `${ballCnt} Ball!!!!!!!!!!!!!`;
 }
 ```
+
+# 2021-08-05
+## 수정 사항 및 구현 내용
+
+* 구현/수정한 내용들
+
+
+    1. 버튼을 클릭할 때 볼, 스트라이크가 화면에서 초기화되도록 개선
+    2. 볼, 스트라이크를 그려주는 함수는 별도로 분리함.
+    3. comUserCheck 함수에서 볼과 스트라이크 정보를 오브젝트 타입으로 리턴 받는 것으로 수정.
+    4. 사용자가 숫자 3개를 초과하여 입력했을 때 얼럿이 뜨도록 검사
+    5. 사용자가 입력한 숫자 중 중복된 값이 있을 경우 게임이 진행이 불가하도록 함수 구현
+
+
+
+
+## 1. 버튼을 클릭할 때 볼, 스트라이크가 화면에서 초기화되도록 개선
+```
+function gameCheck()
+{
+    let gamePlayCnt = 0;
+    const balls = document.querySelectorAll('.ball');
+    const strikes = document.querySelectorAll('.strike');
+
+    for(let i = 0; i < balls.length; i++)
+    {
+        balls[i].style.backgroundColor = "";
+        strikes[i].style.backgroundColor = "";
+    }
+```
+
+balls 클래스와 strike 클래스를 가져와서 변수에 담은 뒤, 백그라운드 컬러를 초기화해준다.
+
+해당 작업이 필요한 이유는, 숫자를 한번 입력하면 스트라이크와 볼 표시가 지워지지 않고 남아있어서 재시도 할 때
+
+볼인지 스트라이크인지 확인이 어렵기 때문이다. 이런 현상을 수정하기 위해 위의 검사 조건을 추가했다.
+
+
+
+## 2. 볼, 스트라이크를 그려주는 함수는 별도로 분리함.
+
+```
+function paintingStrikeBall(ballCnt,strikeCnt)
+{
+    const balls = document.querySelectorAll('.ball');
+    const strikes = document.querySelectorAll('.strike');
+
+    for (let i = 0; i < ballCnt; i++) {
+        console.log('ball', i);
+        balls[i].style.backgroundColor = '#1db71d';
+    }
+    for(let i = 0; i < strikeCnt; i++)
+    {
+        strikes[i].style.backgroundColor = "red";
+    }
+}
+```
+함수를 분리하는 게 꼭 필요한 작업은 아니었으나 comUserCheck 함수에서 HTML 속성을 건드리는 작업을 하고 싶진 않았다.
+
+함수를 처음 구현할 때도 그런 목적이 아니었기 때문이고, 함수 이름에서 HTML을 수정하는 뜻이 없기 때문에 해당 함수를 사용하면서
+
+
+혼동이 있을 것 같았다. 그래서 HTML을 그리는 함수를 별도로 분리하였다. 기능상 큰 차이는 없다.
+
+
+
+## 3. comUserCheck 함수에서 볼과 스트라이크 정보를 오브젝트 타입으로 리턴 받는 것으로 수정.
+
+```
+function comUserCheck(user, com) // String, String
+{
+    let strikeCnt = 0;
+    let ballCnt = 0;
+    const userArr = user.split('');
+    const comArr = com.split('');
+    for (let i = 0; i < userArr.length; i++) {
+        for (let j = 0; j < comArr.length; j++) {
+            if(userArr[i] === comArr[j] && i === j)
+            {
+                strikeCnt++;
+                console.log(`${strikeCnt} Strike !!!!!!!!!!!!!!!!`);
+            }
+            else if(userArr[i] === comArr[j])
+            {
+                ballCnt++;
+                console.log(`${ballCnt} ball !!!!!!!!!!!!!!!!!!!!!`);
+            }
+        }
+    }
+    paintingStrikeBall(ballCnt,strikeCnt);
+    const gameInfoObj = {
+        ball : ballCnt,
+        strike : strikeCnt
+    };
+    return gameInfoObj;
+}
+```
+
+볼과 스트라이크 횟수를 오브젝트로 리턴 받도록 수정하였다.
+본래는 리턴값이 없는 함수로 정보를 단순히 출력해주는 목적으로 구현하였지만 게임 시작 버튼을 클릭하였을 때 볼 카운트와 스트라이크 카운트 정보를
+받아올 수 없는 구조가 문제였다.
+볼 카운트와 스트라이크 카운트 정보를 받아오기 위해 해당 함수에서 오브젝트 형식으로 카운트를 저장하고, 버튼 클릭 이벤트에서 해당 볼 카운트와
+스트라이크 카운트를 활용할 수 있도록 하기 위해 위와 같이 수정하였다.
+
+
+
+## 4. 사용자가 숫자 3개를 초과하여 입력했을 때 얼럿이 뜨도록 검사
+
+```
+if(userInputValue.length > 3)
+    {
+        return alert("숫자 3자리를 입력해주세요.");
+    }
+    // 단순 수정
+```
+
+## 5. 사용자가 입력한 숫자 중 중복된 값이 있을 경우 게임이 진행이 불가하도록 함수 구현
+
+```
+function isInvalidUserInput(inputNum)
+{
+    for(let i = 0; i < inputNum.length - 1; i++)
+    {
+        for(let j = i + 1; j < inputNum.length; j++)
+        {
+            if(inputNum[i] === inputNum[j])
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+```
+
+유저가 숫자를 입력할 때 중복된 숫자 입력이 가능하다. 예를 들어 "111" 이라던지 "212" 등의 입력이 가능한데, 
+이렇게 입력하게 될 경우 숫자 맞추기가 너무 쉬워질 것이라 생각했다.
+
+
+컴퓨터는 중복된 값이 나오지 않지만 유저는 중복된 숫자를 입력하는 것도 문제라고 생각하였다.
+해서, 위 조건식을 만들어서 검사하기로 하였다.
+
+
+userInputNum[0] === userInputNum[1] , userInputNum[0] === userInputNum[2]
+userInputNum[1] === userInputNum[2]
+
+
+위와 같이 3번만 비교가 필요하므로 조건문을 다음과 같이 구현하였다.
+```
+for(let i = 0; i < inputNum.length - 1; i++)
+    {
+        for(let j = i + 1; j < inputNum.length; j++)
+        {
+            if(inputNum[i] === inputNum[j])
+            {
+                return true;
+            }
+```
+
+만일 하나라도 값이 같다면, 유저가 중복된 숫자를 입력한 것이므로 Invalid한 값이다.
+
+
+같다면 바로 true를 리턴하고 함수를 종료하게 구현하였다.
