@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"/>
+    <title>Racing</title>
+</head>
+<body>
+    <div class="gameStartModal">
+        <div class="startContent">
+            <h1>자동차 숫자 입력</h1>
+            <input id = "carinput" type="text" placeholder="자동차 숫자를 입력하세요.">
+            <button class="startButton">게임 시작</button>
+        </div>
+    </div>
+    <h1 align="center">자동차 경주 게임</h1>
+    <div class="container">
+        <!-- <div class="lane">
+            <img id="car1" class="carSize" src="car1.png">
+        </div>
+        <div class="lane">
+            <img id="car2" class="carSize" src="car2.png">
+        </div>
+        <div class="lane">
+            <img id="car3" class="carSize" src="car3.png">
+        </div> -->
+        <div class="finish finish1"></div>
+        <div class="finish finish2"></div>
+        
+    </div>
+
+    <div class="result"></div>
+    <div class="modal hidden">
+        <div class="content">
+            <div id="close">X</div>
+            <h1>레이싱 결과</h1>
+            <div class="ranking"></div>
+        </div>
+    </div>
+    <script src="js/racing.js"></script>
+</body>
+</html>
