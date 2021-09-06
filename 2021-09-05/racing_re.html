@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이싱 리팩토링</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1 style="text-align: center;">자동차 게임</h1>
+    <div class="container hidden">
+        <div class="finish finish1"></div>
+        <div class="finish finish2"></div>
+        <div class="lane">
+            <img src="car1.png" id="car1" class="carSize">
+        </div>
+        <div class="lane">
+            <img src="car2.png" id="car2" class="carSize">
+        </div>
+        <div class="lane">
+            <img src="car3.png" id="car3" class="carSize">
+        </div>
+        <div class="lane">
+            <img src="car4.png" id="car4" class="carSize">
+        </div>
+        <div class="lane">
+            <img src="car5.png" id="car5" class="carSize">
+        </div>
+    </div>
+    <div class="modal">
+        <div class="startInput">
+            <h1>자동차 입력</h1>
+            <select id="carSelect" style="width: 100px;">
+            </select>
+            <button class="startButton">게임 시작</button>
+        </div>
+    </div>
+    <div class="result"></div>
+    <div class="resultmodal hidden">
+        <div class="content">
+            <div id="close">X</div>
+            <h1>레이싱 결과</h1>
+            <div class="ranking"></div>
+        </div>
+    </div>
+    <script src="js/racing_refact.js"></script>
+</body>
+</html>

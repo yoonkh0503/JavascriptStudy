@@ -1,0 +1,167 @@
+.modal {
+    position: absolute;
+    background-color: rgba(25, 25, 25, .7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal > .startInput {
+    background: rgba(199, 211, 221, 0.7);
+    width : 500px;
+    height : 300px;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    flex-direction: column;
+}
+.startButton {
+    display: block;
+    margin: auto;
+    width: 150px;
+    height: 80px;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: skyblue;
+    color:#fff;
+    border:white;
+    border-radius: 10px;
+}
+
+.startButton:hover {
+    color:black;
+}
+
+.carSize {
+    position: relative;
+    width: 100px;
+    height:100px;
+}
+
+.lane {
+    background-color: black;
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    top: 200px;
+}
+
+.container {
+    position: relative;
+    /*background-color: #1F618D;*/
+
+}
+
+.finish {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    background-color: white;
+}
+
+.finish1 {
+    width: 10px;
+    right: 100px;
+}
+
+.finish2 {
+    width: 4px;
+    right: 90px;
+}
+
+.resultmodal {
+    position: absolute;
+    background-color: rgba(25,25,25,.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.resultmodal > .content {
+    position: relative;
+    background: rgba(199, 211, 221, 0.7);
+    width : 400px;
+    height : 500px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+    border-radius: 10px;   
+    flex-direction: column;
+}
+
+.resultmodal > .content h1{
+    padding-left: 10px;
+    display: inline;
+    text-shadow: 1px 1px 2px gray;
+    color: black;
+}
+
+.resultmodal > .content #close {
+    position: absolute;
+    top:0;
+    right: 10px;
+    display: inline;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+}
+
+.reGameButton {
+    display: block;
+    margin: auto;
+    width: 200px;
+    height: 50px;
+    margin-top: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: skyblue;
+    border-radius: 5px;
+    color:#fff;
+}
+
+.reGameButton:hover {
+    color: #1db71d;
+}
+
+.result {
+    display: flex;
+    justify-content: space-around;
+}
+
+.resultCarParent {
+    background-color: white;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.resultCar {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.ranking {
+    width: 80%;
+}
+.ranking > p {
+    display: flex;
+    justify-content: space-between;
+}
+.ranking > p > span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 20px;
+}
