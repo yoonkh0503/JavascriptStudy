@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="center">서점 홈페이지</h1>
+    <form class="center">
+        <input type="text" style="height:50px;" placeholder="아이디를 입력하세요.">
+        <button>Login</button>
+    </form>
+    <h1 class="center" id="msg"></h1>
+    <div id="bookContainer">
+        <button id="buyBtn" class="hidden">구매</button>
+    </div>
+    <script src="product.js"></script>
+    <script src="customer.js"></script>
+</body>
+</html>
