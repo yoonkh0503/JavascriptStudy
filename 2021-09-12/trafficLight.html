@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>신호등</title>
+</head>
+<body>
+    <div class="modal hidden">
+        <div class="gameOverContent">
+            <h2>게임이 종료되었습니다. 재시작 버튼을 눌러주세요.</h2>
+            <button class="startButton">게임 재시작</button>
+        </div>
+    </div>
+    <div>
+        <div class="finish finish1"></div>
+        <div class="finish finish2"></div>
+        <div class="lane">
+            <img src="car5.png" id="car" class="carSize">
+        </div>
+    </div>
+    <div class="container">
+        <div class="light red off"></div>
+        <div class="light orange off"></div>
+        <div class="light green off"></div>
+    </div>
+    <script src="js/trafficLight.js"></script>
+</body>
+</html>

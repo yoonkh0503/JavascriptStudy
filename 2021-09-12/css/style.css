@@ -1,0 +1,116 @@
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+} */
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    min-width: 500px;
+    min-height: 300px;
+    width: 110vh;
+    height: 40vh;
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 7rem;
+    margin-left : 20%;
+    margin-top : 100px;
+}
+
+.light {
+    width: 30vh;
+    height: 30vh;
+    flex-basis: auto;
+    flex-shrink: 0;
+    border-radius: 50%;
+    opacity: .7;
+    transition: all .5s;
+}
+
+.red {
+    background-color: #b81a1a;
+}
+
+.orange {
+    background-color: #b37e1c;
+}
+
+.green {
+    background-color: #1db71d;
+}
+
+.off {
+    background-color: rgba(55, 44, 44, 0.7);
+}
+
+.lane {
+    background-color: black;
+    width: 100%;
+    height: 100px;
+    margin-top: 50px;
+    top: 200px;
+}
+
+.carSize {
+    position: relative;
+    width : 100px;
+    height : 100px;
+}
+
+.finish {
+    position: absolute;
+    top: 50px;
+    height: 100px;
+    background-color: white;
+}
+
+.finish1 {
+    width: 10px;
+    right: 100px;
+}
+
+.finish2 {
+    width: 4px;
+    right: 90px;
+}
+
+.modal {
+    position: absolute;
+    background-color: rgba(25, 25, 25, .7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal > .gameOverContent {
+    background: rgba(199, 211, 221, 0.7);
+    width : 500px;
+    height : 300px;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    flex-direction: column;
+}
+
+.startButton {
+    display: block;
+    margin: auto;
+    width: 200px;
+    height: 80px;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: skyblue;
+    color:#fff;
+    border:white;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
