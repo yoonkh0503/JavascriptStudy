@@ -88,9 +88,9 @@
     height: 100%;
 }
 
-.modal > .gameOverContent {
+.modal > .gameContent {
     background: rgba(199, 211, 221, 0.7);
-    width : 500px;
+    width : 550px;
     height : 300px;
     display: flex;
     justify-content: center;

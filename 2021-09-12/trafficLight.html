@@ -6,10 +6,19 @@
     <title>신호등</title>
 </head>
 <body>
-    <div class="modal hidden">
-        <div class="gameOverContent">
+    <div id="startModal" class="modal">
+        <div id="startContent" class="gameContent">
+            <h4>빨간불인 상태일 때 자동차가 움직이면 게임이 종료됩니다.</h4>
+            <h4 class="hidden">Ctrl키를 누르면 자동차를 움직일 수 있습니다.</h4>
+            <h4 class="hidden">Shift키를 누르면 부스트 모드가 됩니다.</h4>
+            <h4 class="hidden">아래 게임 시작 버튼을 눌러주세요.</h4>
+            <button id="startButton" class="startButton hidden">게임 시작</button>
+        </div>
+    </div>
+    <div id="endModal" class="modal hidden">
+        <div class="gameContent">
             <h2>게임이 종료되었습니다. 재시작 버튼을 눌러주세요.</h2>
-            <button class="startButton">게임 재시작</button>
+            <button id="reStartBtn" class="startButton">게임 재시작</button>
         </div>
     </div>
     <div>
@@ -19,7 +28,7 @@
             <img src="car5.png" id="car" class="carSize">
         </div>
     </div>
-    <div class="container">
+    <div class="container hidden">
         <div class="light red off"></div>
         <div class="light orange off"></div>
         <div class="light green off"></div>
