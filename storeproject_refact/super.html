@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지</title>
+    <style>
+        div {
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        input {
+            font: 1em sans-serif;
+            width: 100px;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">상품 등록 및 회원 가입</h1>
+    <form style="text-align: center;">
+        <div>
+            <label for="product_name">이름 :</label>
+            <input type="text" id="product_name" />
+        </div>
+        <div>
+            <label for="product_price">가격 :</label>
+            <input type="text" id="product_price"/>
+        </div>
+        <div>
+            <label for="product_writer">작가 : </label>
+            <input type="text" id="product_writer"/>
+        </div>
+        <div>
+            <label for="product_pageNum">페이지 수 :</label>
+            <input type="text" id="product_pageNum"/>
+        </div>
+        <div>
+            <label for="product_publisher">출판사 : </label>
+            <input type="text" id="product_publisher"/>
+        </div>
+        <div>
+            <label for="product_uniqueKey">품번 :</label>
+            <input type="text" id="product_uniqueKey"/>
+        </div>
+        <div>
+            <label for="product_stockNum">재고 :</label>
+            <input type="text" id="product_stockNum"/>
+        </div>
+        <div class="button">
+            <button id="productSetBtn" type="submit">상품 등록</button>
+        </div>
+    </form>
+    <script src="js/super.js"></script>
+</body>
+</html>
