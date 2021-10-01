@@ -25,10 +25,12 @@
                             <img class="bookImg" src="img/${productList[i].name}.png">
                             <button id="buyBtn">구매</button>
                             <button id="infoBtn">책 정보 확인</button>
+                            <button id="deleteBtn">삭제</button>
                           </div>`
             result += temp;
         }
         bookContainer.innerHTML = result;
+        
     };
     
     const getUserList = () => JSON.parse(localStorage.getItem(USER_LIST));
@@ -62,11 +64,14 @@
         // userInfoContainer.classList.remove("hidden");
         removeHidden(userInfoContainer);
     };
+
+    
     
     const loginSuccess = function() {
         paintElement();
         setLoginUser();
         paintBookChildContainer();
+        setBuyInfoEvent();
     };
     
     const isValidUser = function() {
@@ -90,6 +95,32 @@
         paintElement();
         paintBookChildContainer();
     }
+
+    const buy = function() {
+        const user = getLoginUser();
+        const parentElement = this.parentElement;
+        const productObj = getObj(getProductList(), "uniqueKey", parentElement.id);
+        console.log("productObj" , productObj);
+        const isMoneyCheck = moneyCheck(user, productObj);
+
+        if(isMoneyCheck) {
+            return alert("돈이 부족합니다.");
+        }
+    
+        if(productObj.stockNum > 0) {
+            productStatusUpdate(productObj.uniqueKey, "stockNum", productObj.stockNum - 1);
+        }
+
+        else {
+            return alert("재고가 없습니다.");
+        }
+        
+        console.log("productObj", productObj);
+        console.log("productObj.stockNum", productObj.stockNum);
+    
+        alert(`${productObj.name}을 구매했습니다.`);
+        alert(`잔액은 ${getLoginUser().money} 입니다.`);
+    };
     
     const setLoginUser = function() {
         const currentUser = getObj(getUserList(), "id", loginInput.value);
@@ -121,32 +152,6 @@
         return true;
     }
     
-    const buy = function() {
-        const user = getLoginUser();
-        const parentElement = this.parentElement;
-        const productObj = getObj(getProductList(), "uniqueKey", parentElement.id);
-        console.log("productObj" , productObj);
-        const isMoneyCheck = moneyCheck(user, productObj);
-
-        if(isMoneyCheck) {
-            return alert("돈이 부족합니다.");
-        }
-    
-        if(productObj.stockNum > 0) {
-            productStatusUpdate(productObj.uniqueKey, "stockNum", productObj.stockNum - 1);
-        }
-
-        else {
-            return alert("재고가 없습니다.");
-        }
-        
-        console.log("productObj", productObj);
-        console.log("productObj.stockNum", productObj.stockNum);
-    
-        alert(`${productObj.name}을 구매했습니다.`);
-        alert(`잔액은 ${getLoginUser().money} 입니다.`);
-    };
-    
     const showInfo = function() {
         const parentElement = this.parentElement;
         const productObj = getObj(getProductList(), "uniqueKey", parentElement.id)
@@ -155,18 +160,21 @@
         alert(`${productObj.name}의 페이지 수는 ${productObj.pageNum}쪽 입니다.`);
         alert(`${productObj.name}은 현재 ${productObj.stockNum}개 남아있습니다.`);  
     };
+
+    const setBuyInfoEvent = function() {
+        const buyBtns = document.querySelectorAll("#buyBtn");
+        const infoBtns = document.querySelectorAll("#infoBtn");
     
-    const buyBtns = document.querySelectorAll("#buyBtn");
-    const infoBtns = document.querySelectorAll("#infoBtn");
+        for(let i = 0; i < buyBtns.length; i++) {
+            buyBtns[i].addEventListener('click', buy);
+        }
     
-    for(let i = 0; i < buyBtns.length; i++) {
-        buyBtns[i].addEventListener('click', buy);
-    }
-    
-    for(let i = 0; i < infoBtns.length; i++) {
-        infoBtns[i].addEventListener('click', showInfo);
-    }
-    
+        for(let i = 0; i < infoBtns.length; i++) {
+            infoBtns[i].addEventListener('click', showInfo);
+        }
+    };
+    setBuyInfoEvent();
+
     const userStatusUpdate = function(property, val) {
         const currentUser = getLoginUser();
         const userList = getUserList();
@@ -174,12 +182,15 @@
         currentUser[property] = val;
         localStorage.setItem(CURRENT_LOGIN_USER, JSON.stringify(currentUser));
     
-        for(let i = 0; i < userList.length; i++) {
-            if(userList[i].id === currentUser.id) {
-                userList[i] = currentUser;
-                console.log("currentUser[i] ", currentUser);
-            }
-        }
+        // for(let i = 0; i < userList.length; i++) {
+        //     if(userList[i].id === currentUser.id) {
+        //         userList[i] = currentUser;
+        //         console.log("currentUser[i] ", currentUser);
+        //     }
+        // }
+        
+        const index = userList.findIndex(elem => elem.id === currentUser.id);
+        userList[index] = currentUser;
 
         localStorage.setItem(USER_LIST, JSON.stringify(userList));
     };
@@ -207,7 +218,29 @@
     };
 
     logOutImg.addEventListener('click', logOut);
-    
+
+    const deleteBtns = document.querySelectorAll("#deleteBtn");
+    const deleteProductElem = function(targetElem) {
+        const productObj = getObj(getProductList(), "uniqueKey", targetElem.id);
+        bookContainer.removeChild(targetElem);
+        alert(`${productObj.name} 을 삭제했습니다.`);
+    };
+
+    const deleteProductObj = function(targetUniqueKey) {
+        const productObj = getObj(getProductList(), "uniqueKey", targetUniqueKey);
+        const productList = getProductList();
+        const index = productList.findIndex(elem => elem.uniqueKey === productObj.uniqueKey);
+        productList.splice(index, 1);
+
+        localStorage.setItem(PRODUCT_LIST, JSON.stringify(productList));
+    };
+
+    for(let elem of deleteBtns) {
+        elem.addEventListener('click', function(event) {
+            deleteProductElem(event.currentTarget.parentElement);
+            deleteProductObj(event.currentTarget.parentElement.id);
+        })
+    }
 })();
 
 
@@ -243,7 +276,6 @@ To Do List
 userList의 money를 차감해서 저장하도록 수정 필요.
 */
 
-
 /* Summary : 2021-09-27 StoreProject userListUpdate 함수 버그 수정 및 유효성 검사 추가
 ==================================================================================
 Descriptrion : 
@@ -257,7 +289,6 @@ Type : Feat, Fix
 key 값이 존재하는데, userArr, productArr을 초기화해버리면 기존에 존재하던 userList , productList 도
 전부 초기화되는 문제가 발생하여 null인지 체크하는 코드 추가.
 */
-
 
 /* Summary : 2021-10-01 StoreProject 리팩토링 및 로그아웃 기능 추가 
 ==================================================================================
@@ -275,4 +306,20 @@ hidden으로 변경되도록.
 To Do List
 - 프로덕트 삭제 기능 구현해야함.
 - 프로덕트가 삭제 되었을 때 유니크 키가 정상적으로 저장되는지 테스트 필요.
+*/
+
+/* Summary : 2021-10-01 StoreProject 삭제 기능 추가
+==================================================================================
+Descriptrion : 
+Type : Feat, Fix, Refactor
+==================================================================================
+- 삭제 버튼 추가, 삭제 기능 추가.
+- deleteProductElem 함수로 bookChild Element를 지우는 기능 구현.
+- deleteProductObj 함수로 상품 리스트에서 상품 객체를 지우는 기능 구현.
+- 상품을 삭제하고 상품 등록을 다시 할 때 새로고침을 하지 않으면 이전 상품 리스트를 참고하는 문제가 있어 수정함.
+로컬스토리지에서 값을 가져오는 코드를 상품 등록 이벤트 리스너 안으로 스코프 위치 변경함.
+- userStatusUpdate 함수 코드를 간결하게 변경함. findIndex 함수를 사용하여 인덱스를 찾고,
+해당 인덱스를 현재 유저의 변경된 값으로 저장하도록 수정함.
+- 상품등록 페이지에서 유니크 키도 로컬스토리지에 등록하여 사용하기로 수정. 유니크 키를 로컬스토리지에 저장하지 않으면
+스토어 페이지에서 상품을 삭제 후에 유니크 키가 중복될 위험이 있음.
 */

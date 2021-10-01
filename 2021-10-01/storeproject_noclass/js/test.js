@@ -2,75 +2,75 @@ const USER_LIST = "USER_LIST";
 const CURRENT_LOGIN_USER = "CURRENT_LOGIN_USER";
 const PRODUCT_LIST = "PRODUCT_LIST";
 
-class Product {
-    constructor(name, pageNum, price, stockNum, uniqueKey) {
-        this.name = name;
-        this.pageNum = pageNum;
-        this.price = price;
-        this.stockNum = stockNum;
-        this.uniqueKey = uniqueKey;
-    }
-}
+// class Product {
+//     constructor(name, pageNum, price, stockNum, uniqueKey) {
+//         this.name = name;
+//         this.pageNum = pageNum;
+//         this.price = price;
+//         this.stockNum = stockNum;
+//         this.uniqueKey = uniqueKey;
+//     }
+// }
 
-const testProductArr = [];
+// const testProductArr = [];
 
-const testProduct1 = new Product(
-    "자바의정석",
-    "2000",
-    "20000",
-    "100",
-    1
-);
+// const testProduct1 = new Product(
+//     "자바의정석",
+//     "2000",
+//     "20000",
+//     "100",
+//     1
+// );
 
-const testProduct2 = new Product(
-    "모던자바스크립트 딥다이브",
-    "1000",
-    "15000",
-    "100",
-    2
-);
+// const testProduct2 = new Product(
+//     "모던자바스크립트 딥다이브",
+//     "1000",
+//     "15000",
+//     "100",
+//     2
+// );
 
-const testProduct3 = new Product(
-    "모던자바스크립트 입문",
-    "800",
-    "18000",
-    "100",
-    3
-);
+// const testProduct3 = new Product(
+//     "모던자바스크립트 입문",
+//     "800",
+//     "18000",
+//     "100",
+//     3
+// );
 
-const testProduct4 = new Product(
-    "혼자 공부하는 자바스크립트",
-    "500",
-    "13000",
-    "100",
-    4
-);
+// const testProduct4 = new Product(
+//     "혼자 공부하는 자바스크립트",
+//     "500",
+//     "13000",
+//     "100",
+//     4
+// );
 
-const testProduct5 = new Product(
-    "Head First Python",
-    "700",
-    "22000",
-    "100",
-    5
-);
+// const testProduct5 = new Product(
+//     "Head First Python",
+//     "700",
+//     "22000",
+//     "100",
+//     5
+// );
 
-const testProduct6 = new Product(
-    "수학의정석",
-    "500",
-    "25000",
-    "100",
-    6
-);
+// const testProduct6 = new Product(
+//     "수학의정석",
+//     "500",
+//     "25000",
+//     "100",
+//     6
+// );
 
-testProductArr.push(testProduct1);
-testProductArr.push(testProduct2);
-testProductArr.push(testProduct3);
-testProductArr.push(testProduct4);
-testProductArr.push(testProduct5);
-testProductArr.push(testProduct6);
+// testProductArr.push(testProduct1);
+// testProductArr.push(testProduct2);
+// testProductArr.push(testProduct3);
+// testProductArr.push(testProduct4);
+// testProductArr.push(testProduct5);
+// testProductArr.push(testProduct6);
 
 
-localStorage.setItem(PRODUCT_LIST,JSON.stringify(testProductArr));
+// localStorage.setItem(PRODUCT_LIST,JSON.stringify(testProductArr));
 
 class User {
     constructor(id, nickName, money) {
