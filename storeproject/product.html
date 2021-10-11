@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 등록</title>
+    <style>
+        div {
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        input {
+            font: 1em sans-serif;
+            width: 100px;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">상품 등록</h1>
+    <form style="text-align: center;">
+        <div>
+            <label for="name">책 이름 :</label>
+            <input type="text" id="name"/>
+        </div>
+        <div>
+            <label for="pageNum">페이지 수 :</label>
+            <input type="text" id="pageNum"/>
+        </div>
+        <div>
+            <label for="price">가격 : </label>
+            <input type="text" id="price"/>
+        </div>
+        <div>
+            <label for="stockNum">재고수량 : </label>
+            <input type="text" id="stockNum"/>
+        </div>
+        <div class="button">
+            <button id="productSetBtn" type="submit">상품 등록</button>
+        </div>
+        <script src="js/product.js"></script>
+</body>
+</html>
